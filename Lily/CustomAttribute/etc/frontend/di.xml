@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/frontend/di.xsd">
-    <type name="Magento\Customer\Block\Address\Edit">
-        <plugin name="Lily\CustomAttribute\Customer\AddressEditPlugin"
-                type="Lily\CustomAttribute\Plugin\Customer\AddressEditPlugin"/>
-
-    </type>
-</config>

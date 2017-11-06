@@ -1,0 +1,36 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <custom_form>1</custom_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <custom_form>1</custom_form>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <custom_form>
+                        <label>Custom Form</label>
+                    </custom_form>
+                </areas>
+            </frontend>
+        </captcha>
+
+        <contact>
+            <contact>
+                <enabled>1</enabled>
+            </contact>
+            <email>
+                <recipient_email>
+                    <![CDATA[liliannecantillo@yahoo.es]]>
+                </recipient_email>
+                <sender_email_identity>Wholesale</sender_email_identity>
+                <email_template>wholesale_email_email_template</email_template>
+            </email>
+        </contact>
+    </default>
+</config>

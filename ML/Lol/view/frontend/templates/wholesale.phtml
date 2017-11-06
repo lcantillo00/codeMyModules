@@ -1,0 +1,109 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Magento\Contact\Block\ContactForm $block */
+?>
+<form class="form contact"
+      action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Wholesale')) ?></span></legend><br />
+        <div class="field note no-label"><?= $block->escapeHtml(__('If you have any questions or comments about purchasing from us at wholesale prices, please contact us by filling out the form below:.')) ?></div>
+        <div class="field name required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="" class="input-text" type="email" />
+            </div>
+        </div>
+        <div class="field telephone">
+            <label class="label" for="telephone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+            <div class="control">
+                <input name="telephone" id="telephone" title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+        <div class="field company required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Company')) ?></span></label>
+            <div class="control">
+                <input name="company" id="company" title="<?= $block->escapeHtmlAttr(__('Company')) ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+        <div class="field country required">
+            <?php $countryList=$block->getCountries();?>
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Country')) ?></span></label>
+            <div class="control" id="country">
+               <span id="country" value="country" class="country"><?php echo $countryList?></span>
+
+<!--                <select name="country" id="country" class="required-entry"></select>-->
+<!--                    <option value="">--><?php //echo $block->escapeHtml(__('Select'))  ?><!--</option>-->
+<!--                    --><?php //$countryList = $block->getCountries(); ?>
+<!--                    --><?php //foreach ($countryList as $country):?>
+<!--                        <option value="">--><?php //echo $country['value']; ?><!--</option>-->
+<!--                    --><?php //endforeach; ?>
+<!--                </select>-->
+<!--                <input name="country" id="country" title="--><?//= $block->escapeHtmlAttr(__('Country')) ?><!--" value="--><?//= $block->escapeHtmlAttr($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?><!--" class="input-text" type="text" data-validate="{required:true}"/>-->
+            </div>
+        </div>
+
+<!--        <div class="field country">-->
+<!--            <label class="label" for="region"><span>--><?php // echo __('Region') ?><!--</span></label>-->
+<!--            --><?php //$regionList=$block->getRegion();?>
+<!--            <div class="control">-->
+<!--                --><?php //echo $regionList?>
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div>-->
+<!---->
+<!--            <select name="countries">-->
+<!--                <option class="placeholder" value="" >Country</option>-->
+<!--                --><?php //$countries = $block->getAvailableCountries();?>
+<!--               --><?php //foreach ($countries as $country) : ?>
+<!--                <option value="--><?php //echo $country->getCountryId(); ?><!--">--><?php //echo $country->getName(); ?><!--</option>-->
+<!--                --><?php //endforeach;?>
+<!--            </select>-->
+<!--        </div>-->
+
+
+        <div class="field product required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Product')) ?></span></label>
+            <div class="control">
+                <select name="product" id="product" class="product">
+                    <option value="" id="product"><?php echo $block->escapeHtmlAttr(__('Select')) ?></option>
+
+
+                    <?php $productCollection = $block->getProductCollection(); ?>
+
+                    <?php foreach ($productCollection as $product):?>
+                        <option id="product" class="product"value="<?php echo $product->getSku() ?>"><?php echo $product->getSku() ?></option>
+                    <?php endforeach; ?>
+                </select>
+        </div>
+        <div class="field comment required">
+            <label class="label" for="comment"><span><?= $block->escapeHtml(__('Comment')) ?></span></label>
+            <div class="control">
+                <textarea name="comment" id="comment" title="<?= $block->escapeHtmlAttr(__('Comment')) ?>" class="input-text" cols="5" rows="3" ></textarea>
+            </div>
+        </div>
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>
