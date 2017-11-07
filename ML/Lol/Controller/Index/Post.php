@@ -138,9 +138,9 @@ class Post extends \Magento\Contact\Controller\Index
         if (trim($request->getParam('company')) === '') {
             throw new LocalizedException(__('Company is missing'));
         }
-//        if (trim($request->getParam('product')) === '') {
-//            throw new LocalizedException(__('Product is missing'));
-//        }
+        if (trim($request->getParam('product')) === '') {
+            throw new LocalizedException(__('Product is missing'));
+        }
         if (false === \strpos($request->getParam('email'), '@')) {
             throw new LocalizedException(__('Invalid email address'));
         }
